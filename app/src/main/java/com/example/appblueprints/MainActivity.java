@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -13,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth auth;
+    private FirebaseAuth firebaseAuth;
     private Button profileBtn;
     private Button logOutBtn;
 
@@ -21,8 +22,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        auth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         profileBtn = findViewById(R.id.profileBtn);
+
+
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SetUpActivity.class));
             }
         });
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if(currentUser == null){
+            startActivity(new Intent(MainActivity.this, activitySignUp.class));
+            Toast.makeText(MainActivity.this, "Please login first", Toast.LENGTH_SHORT).show();
+        }
     }
 }
