@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">appBlueprints</string>
+    <string name="blueprint">App Blueprint</string>
+    <string name="stanford">stanford</string>
+    <string name="androidLogo">androidLogo</string>
+    <string name="askEmail">Email</string>
+    <string name="askPass">Password</string>
+    <string name="askLogIn">Already have account? Login!</string>
+    <string name="signUpButton">Sign Up</string>
+    <string name="login">Log In</string>
+    <string name="SignUp">SignUp</string>
+    <string name="askSignUp">New Here? Sign up!</string>
+    <string name="logOut">log out</string>
+    <string name="logout">Log Out</string>
+    <string name="string_logout">Log Out</string>
+    <string name="SaveBtn">Save</string>
+    <string name="profile">Profile</string>
+    <string name="log_out">Log out</string>
+    <string name="name">Name</string>
+</resources>
