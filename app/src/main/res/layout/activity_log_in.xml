@@ -14,9 +14,9 @@
         android:layout_marginTop="172dp"
         android:ems="10"
         android:hint="@string/askEmail"
-        android:textColorHint="@color/cardview_dark_background"
         android:inputType="textEmailAddress"
         android:textColor="@color/white"
+        android:textColorHint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,8 +30,8 @@
         android:ems="10"
         android:hint="@string/askPass"
         android:inputType="textPassword"
-        android:textColorHint="@color/cardview_dark_background"
         android:textColor="@color/white"
+        android:textColorHint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,26 +51,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/logInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/askPass"
-        app:layout_constraintVertical_bias="0.394" />
-
-    <Button
         android:id="@+id/askSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
         android:text="@string/askSignUp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        app:layout_constraintBottom_toTopOf="@+id/askSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/askPass"
+        app:layout_constraintVertical_bias="0.605" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

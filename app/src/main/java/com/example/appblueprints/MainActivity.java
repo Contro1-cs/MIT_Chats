@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        startActivity(new Intent(MainActivity.this, activitySignUp.class));
-        Toast.makeText(MainActivity.this, "Please login first", Toast.LENGTH_SHORT).show();
+        if (currentUser == null) {
+            startActivity(new Intent(MainActivity.this, activitySignUp.class));
+            Toast.makeText(MainActivity.this, "Please login first", Toast.LENGTH_SHORT).show();
+        }
     }
 }

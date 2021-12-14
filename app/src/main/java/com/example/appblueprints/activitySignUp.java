@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +20,7 @@ public class activitySignUp extends AppCompatActivity {
 
     private EditText signUpName, signUpPass;
     private Button signUpBtn,askLogIn;
+    private ProgressBar progressBar;
     private FirebaseAuth auth;
 
     @Override
@@ -32,6 +34,8 @@ public class activitySignUp extends AppCompatActivity {
         signUpPass = findViewById(R.id.signUpPass);
         signUpBtn = findViewById(R.id.signUpBtn);
         askLogIn = findViewById(R.id.askLogIn);
+        progressBar = findViewById(R.id.signUpProgress);
+        progressBar.setVisibility(View.INVISIBLE);
 
         askLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +55,7 @@ public class activitySignUp extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                startActivity(new Intent(activitySignUp.this,logInActivity.class));
+                                startActivity(new Intent(activitySignUp.this,MainActivity.class));
                                 finish();
                             }else{
                                 Toast.makeText(activitySignUp.this, task.getException().toString(), Toast.LENGTH_SHORT).show();

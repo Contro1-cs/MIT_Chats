@@ -16,8 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class logInActivity extends AppCompatActivity {
-    private Button logInBtn;
-    private FirebaseAuth auth;
+    private Button loginBtn,askSignUp;
+    private FirebaseAuth mAuth;
     private EditText logInEmail, loginPass;
 
     @Override
@@ -25,32 +25,12 @@ public class logInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         FirebaseAuth.getInstance();
-        logInBtn = findViewById(R.id.logInBtn);
         logInEmail = findViewById(R.id.askEmail);
         loginPass = findViewById(R.id.askPass);
+        loginBtn = findViewById(R.id.loginBtn);
         FirebaseAuth.getInstance().toString();
 
-        logInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = logInEmail.getText().toString();
-                String pass = loginPass.getText().toString();
 
-                if(!email.isEmpty() && !pass.isEmpty()){
-                    auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(logInActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(logInActivity.this, MainActivity.class));
-                                finish();
-                            }else{
-                                Toast.makeText(logInActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-            }
-        });
+
     }
 }

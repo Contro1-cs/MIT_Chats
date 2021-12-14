@@ -76,23 +76,47 @@ public class SetUpActivity extends AppCompatActivity {
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
                 String name = askName.getText().toString();
+                StorageReference imageRef = storageReference.child("Profile_pics").child(Uid + ".jpg");
+                    if (!name.isEmpty() && mImageUri != null)    {
+                        imageRef.putFile(mImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            saveToFireStore(task, name, imageRef);
+                                        }
+                                    });
 
-                if(!name.isEmpty() && mImageUri != null) {
-                    StorageReference imageRef = storageReference.child("ProfilePics").child(Uid + ".jpg");
-                    imageRef.putFile(mImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                saveToFireStore(task, name, imageRef);
-                            } else {
-                                Toast.makeText(SetUpActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                    Toast.makeText(SetUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
                             }
-                            progressBar.setVisibility(View.INVISIBLE);
-                        }
-                    });
+                        });
+                    } else {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        Toast.makeText(SetUpActivity.this, "Please Select picture and write your name", Toast.LENGTH_SHORT).show();
+                    }
+            }
+        });
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+                    if (ContextCompat.checkSelfPermission(SetUpActivity.this , Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                        ActivityCompat.requestPermissions(SetUpActivity.this , new String[]{Manifest.permission.READ_EXTERNAL_STORAGE} , 1);
+                    }else{
+                        CropImage.activity()
+                                .setGuidelines(CropImageView.Guidelines.ON)
+                                .setAspectRatio(1,1)
+                                .start(SetUpActivity.this);
+                    }
                 }
             }
         });

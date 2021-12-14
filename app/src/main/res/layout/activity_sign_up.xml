@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".activitySignUp">
 
     <EditText
@@ -13,9 +14,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="124dp"
         android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:hint="@string/askEmail"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
         android:textColorHint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/SignUp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -43,7 +44,7 @@
         android:ems="10"
         android:hint="@string/askPass"
         android:inputType="textPassword"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textColorHint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -82,5 +83,17 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+
+    <ProgressBar
+        android:id="@+id/signUpProgress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/signUpName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.421" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
