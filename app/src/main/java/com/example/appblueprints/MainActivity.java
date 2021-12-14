@@ -24,8 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
         profileBtn = findViewById(R.id.profileBtn);
+        logOutBtn = findViewById(R.id.logOutBtn);
 
-
+        logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MainActivity.this, logInActivity.class));
+                finish();
+            }
+        });
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if(currentUser == null){
-            startActivity(new Intent(MainActivity.this, activitySignUp.class));
-            Toast.makeText(MainActivity.this, "Please login first", Toast.LENGTH_SHORT).show();
-        }
+        startActivity(new Intent(MainActivity.this, activitySignUp.class));
+        Toast.makeText(MainActivity.this, "Please login first", Toast.LENGTH_SHORT).show();
     }
 }

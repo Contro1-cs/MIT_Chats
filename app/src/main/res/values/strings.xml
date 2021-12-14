@@ -17,4 +17,5 @@
     <string name="profile">Profile</string>
     <string name="log_out">Log out</string>
     <string name="name">Name</string>
+    <string name="bio">Your Bio</string>
 </resources>

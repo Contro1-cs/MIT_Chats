@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,16 +18,15 @@ import com.google.firebase.auth.FirebaseAuth;
 public class activitySignUp extends AppCompatActivity {
 
     private EditText signUpName, signUpPass;
-    private Button signUpBtn;
+    private Button signUpBtn,askLogIn;
     private FirebaseAuth auth;
-    private TextView askLogIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        auth=FirebaseAuth.getInstance();
+        auth=FirebaseAuth.getInstance();  
 
         signUpName = findViewById(R.id.signUpName);
         signUpPass = findViewById(R.id.signUpPass);
