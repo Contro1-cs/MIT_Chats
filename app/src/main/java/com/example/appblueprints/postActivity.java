@@ -73,7 +73,7 @@ public class postActivity extends AppCompatActivity {
                                     public void onSuccess(Uri uri) {
                                         HashMap<String, Object> postMap = new HashMap<>();
                                         postMap.put("image",uri.toString());
-                                        postMap.put("User", currentUserId);
+                                        postMap.put("user", currentUserId);
                                         postMap.put("caption",caption);
                                         postMap.put("time",FieldValue.serverTimestamp());
 
