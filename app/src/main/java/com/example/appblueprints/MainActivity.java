@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private Button profileBtn;
-    private Button logOutBtn;
+    private Button logOutBtn, addPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
         profileBtn = findViewById(R.id.profileBtn);
+        addPost = findViewById(R.id.postRedirect);
         logOutBtn = findViewById(R.id.logOutBtn);
+
+        addPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, postActivity.class));
+            }
+        });
 
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override

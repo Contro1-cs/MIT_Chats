@@ -35,6 +35,8 @@ public class activitySignUp extends AppCompatActivity {
         signUpBtn = findViewById(R.id.signUpBtn);
         askLogIn = findViewById(R.id.askLogIn);
         progressBar = findViewById(R.id.signUpProgress);
+
+
         progressBar.setVisibility(View.INVISIBLE);
 
         askLogIn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +49,7 @@ public class activitySignUp extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 String email = signUpName.getText().toString();
                 String pass = signUpPass.getText().toString();
 
@@ -67,5 +70,6 @@ public class activitySignUp extends AppCompatActivity {
                 }
             }
         });
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }

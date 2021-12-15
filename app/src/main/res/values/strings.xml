@@ -18,4 +18,6 @@
     <string name="log_out">Log out</string>
     <string name="name">Name</string>
     <string name="bio">Your Bio</string>
+    <string name="add_captions">Add captions</string>
+    <string name="add_post">Add post</string>
 </resources>
